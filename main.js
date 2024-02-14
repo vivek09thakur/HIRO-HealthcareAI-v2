@@ -1,57 +1,89 @@
-import { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } from "@google/generative-ai";
-import Base64 from 'base64-js';
-import MarkdownIt from 'markdown-it';
-import './style.css';
+import {
+  GoogleGenerativeAI,
+  HarmBlockThreshold,
+  HarmCategory,
+} from "@google/generative-ai";
+// import Base64 from 'base64-js';
+import MarkdownIt from "markdown-it";
+import "./style.css";
 
-let API_KEY = 'AIzaSyDVHLIhk-owU1VU3pJmVCUujpp7tXl_A9E';
+let API_KEY = "AIzaSyDVHLIhk-owU1VU3pJmVCUujpp7tXl_A9E";
 
-let form = document.querySelector('form');
+let form = document.querySelector("form");
 let promptInput = document.querySelector('input[name="prompt"]');
-let output = document.querySelector('.output');
+let output = document.querySelector(".output");
 
 form.onsubmit = async (ev) => {
   ev.preventDefault();
-  output.textContent = 'Analyzing...';
+  output.textContent = "Analyzing...";
 
   try {
-    let imageUrl = form.elements.namedItem('chosen-image').value;
-    let imageBase64 = await fetch(imageUrl)
-      .then(r => r.arrayBuffer())
-      .then(a => Base64.fromByteArray(new Uint8Array(a)));
+    let contents = [promptInput.value];
 
-
-    let contents = [
-      {
-        role: 'user',
-        parts: [
-          { inline_data: { mime_type: 'image/jpeg', data: imageBase64, } },
-          { text: promptInput.value }
-        ]
-      }
-    ];
-
-    // Call the gemini-pro-vision model, and get a stream of results
     const genAI = new GoogleGenerativeAI(API_KEY);
     const model = genAI.getGenerativeModel({
-      model: "gemini-pro-vision",
+      model: "gemini-pro",
       safetySettings: [
         {
           category: HarmCategory.HARM_CATEGORY_HARASSMENT,
           threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
         },
+        {
+          category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+          threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+        },
       ],
     });
+    const chat = model.startChat({
+      history: [
+        { role: "user", parts: "who is your creator" },
+        {
+          role: "model",
+          parts:
+            "I was created by Vivek Thakur,He is Data Science enthusiast and currently studying his degree in computer science.",
+        },
+        { role: "user", parts: "who created you" },
+        {
+          role: "model",
+          parts:
+            "I was created by Vivek Thakur,He is Data Science enthusiast and currently studying his degree in computer science.",
+        },
+        { role: "user", parts: "who created you?" },
+        {
+          role: "model",
+          parts:
+            "I was created by Vivek Thakur,He is Data Science enthusiast and currently studying his degree in computer science.",
+        },
+        {
+          role: "user",
+          parts: "who is your master",
+        },
+        {
+          role: "model",
+          parts:
+            "Vivek Thakur from Jharkhand India,He is Data Science enthusiast and currently studying his degree in computer science.",
+        },
+        { role: "user", parts: "What are you?" },
+        {
+          role: "model",
+          parts:
+            "I am an Artificial Intelligence Healthcare Companion, I can daignose your health condition by extracting the symptoms from your prompt or just explaination of your issue",
+        },
+      ],
+      generationConfig: {
+        maxOutputTokens: 250,
+      },
+    });
 
-    const result = await model.generateContentStream({ contents });
+    const result = await chat.sendMessageStream(contents);
 
-    // Read from the stream and interpret the output as markdown
     let buffer = [];
     let md = new MarkdownIt();
     for await (let response of result.stream) {
       buffer.push(response.text());
-      output.innerHTML = md.render(buffer.join(''));
+      output.innerHTML = md.render(buffer.join(""));
     }
   } catch (e) {
-    output.innerHTML += '<hr>' + e;
+    output.innerHTML += "<hr>" + e;
   }
 };

@@ -1,8 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
-body {
-  margin: 24px;
-  font-family: "Raleway", sans-serif;
-}
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 main {
   width: 100%;
   padding: 24px;
@@ -13,10 +9,15 @@ main {
 * {
   outline-color: var(--accent-color);
   overflow-x: hidden;
+  font-family: "Raleway", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 main {
   background-color: #fff;
+  width: 100%;
+
 }
 
 h1 {
@@ -24,13 +25,13 @@ h1 {
   align-items: center;
   gap: 8px;
   margin: 0 auto;
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 h1::before {
-  content: '';
+  content: "";
   display: inline-block;
-  background: url(gemini.png);
+  background: url(./public/gemini.png);
   width: 20%;
   height: auto;
   background-size: cover;
@@ -38,62 +39,6 @@ h1::before {
 
 form {
   margin: 0;
-}
-
-.image-picker {
-  display: flex;
-  width: 100%;
-  gap: 8px;
-  margin-top: 24px;
-}
-
-.image-choice {
-  position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.image-choice:has(:checked)::before {
-  pointer-events: none;
-  position: absolute;
-  right: 8px;
-  top: 8px;
-  z-index: 1;
-  color: white;
-  content: '✓';
-  background-color: var(--accent-color);
-  width: 16px;
-  height: 16px;
-  display: grid;
-  place-items: center;
-  font-weight: bold;
-  border-radius: 100px;
-  box-shadow: 0 0 0 2px #fff;
-}
-
-.image-choice:has(:checked)::after {
-  content: '';
-  position: absolute;
-  pointer-events: none;
-  inset: 0;
-  border-radius: 8px;
-  box-shadow:
-    0 0 0 2px var(--accent-color) inset,
-    0 0 0 4px #fff inset;
-}
-
-.image-choice img {
-  width: 100%;
-}
-
-.image-choice input {
-  opacity: 0;
-  position: absolute;
-}
-
-.image-choice:focus-within::after {
-  box-shadow: 0 0 0 4px var(--accent-color) inset;
 }
 
 .prompt-box {
@@ -123,7 +68,7 @@ button {
 
 button {
   border-color: var(--accent-color);
-  background-color: var(--accent-color);
+  background: #8d5afd;
   color: white;
   font-weight: bold;
   cursor: pointer;
