@@ -3,20 +3,23 @@ import MarkdownIt from "markdown-it";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 
-// API_KEY
-const API_KEY = "AIzaSyDVHLIhk-owU1VU3pJmVCUujpp7tXl_A9E";
 
+const API_KEY = "AIzaSyDVHLIhk-owU1VU3pJmVCUujpp7tXl_A9E";
 let form = document.querySelector("form");
 let promptInput = document.querySelector('input[name="prompt"]');
 let output = document.querySelector(".output");
+const introCard = document.querySelector(".intro-card")
 
 form.onsubmit = async (ev) => {
   ev.preventDefault();
-  output.innerHTML = ""; // Clear output
+  
   output.textContent = "Analyzing...";
 
   try {
+
     let contents = [promptInput.value];
+    promptInput.value = ''
+    introCard.textContent = ''
 
     const genAI = new GoogleGenerativeAI(API_KEY);
     const model = genAI.getGenerativeModel({
@@ -34,7 +37,6 @@ form.onsubmit = async (ev) => {
     });
     const chat = model.startChat({
       history: [
-
         { role: "user", parts: "what is your name" },
         { role: "model", parts: "I am HIRO, an Artificial Intelligence Healthcare Companion",},
         { role: "user", parts: "who is your creator" },
@@ -47,7 +49,6 @@ form.onsubmit = async (ev) => {
         { role: "model", parts:"Vivek Thakur from Jharkhand India,He is Data Science enthusiast and currently studying his degree in computer science.",},
         { role: "user", parts: "What are you?" },
         { role: "model", parts:"I am an Artificial Intelligence Healthcare Companion, I can daignose your health condition by extracting the symptoms from your prompt or just explaination of your issue",},
-
       ],
       generationConfig: {
         maxOutputTokens: 250,
@@ -55,7 +56,6 @@ form.onsubmit = async (ev) => {
     });
 
     const result = await chat.sendMessageStream(contents);
-
     let buffer = [];
     let md = new MarkdownIt();
     for await (let response of result.stream) {
