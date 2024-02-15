@@ -5,7 +5,7 @@ import {
 } from "@google/generative-ai";
 import MarkdownIt from "markdown-it";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./src/styles/style.css";
+import "./style.css";
 
 // API_KEY
 const API_KEY = "AIzaSyDVHLIhk-owU1VU3pJmVCUujpp7tXl_A9E";
