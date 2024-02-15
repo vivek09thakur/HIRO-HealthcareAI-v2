@@ -4,9 +4,8 @@ import {
   HarmCategory,
 } from "@google/generative-ai";
 import MarkdownIt from "markdown-it";
-import History from "./src/scripts/history";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../styles/style.css";
+import "./src/styles/style.css";
 
 // API_KEY
 const API_KEY = "AIzaSyDVHLIhk-owU1VU3pJmVCUujpp7tXl_A9E";
