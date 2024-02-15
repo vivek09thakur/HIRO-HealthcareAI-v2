@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+}
+
+:root {
+  --bg: #19202f;
+  --bgcolor1: #39798f;
+}
+
+body {
+  background: var(--bg) !important;
+  color: #b8cfffd3;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10vh;
+  height: 100%;
+  background: var(--bgcolor1) !important;
+
+}
+
+.sidebar img {
+  width: 3rem;
+  height: 2rem;
+  margin: .7rem .7rem 0 .5rem;
+}
+
+.sidebar .text {
+  rotate: -90deg;
+  position: fixed;
+  left: -132px;
+  bottom: 50%;
+}
+
+.sidebar .text a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+main {
+  width: (100% - 10vh);
+  margin-left: 10vh;
+  padding: 1rem;
+}
+
+form {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  left: 30%;
+}
+
+.prompt-box {
+  width: 100%;
+}
+
+.prompt-box input[type="text"] {
+  width: 40vw;
+  padding: 1rem;
+  margin: .5rem 0;
+  border: none;
+  border-radius: .5rem 0 0 .5rem;
+  background: var(--bgcolor1);
+  color: #000000;
+  outline: none;
+  font-weight: 600;
+}
+
+.prompt-box input[type="text"]::placeholder {
+  color: #b8cfffd3;
+  font-weight: 600;
+}
+
+.prompt-box button {
+  padding: 1rem;
+  margin: -3px -11px 0 -11px;
+  border: none;
+  width: 5rem !important;
+  border-radius: 0 .5rem .5rem 0;
+  background: var(--bgcolor1);
+  color: #b8cfffd3;
+  outline: none;
+  cursor: pointer;
+}
+
+.chat-window{
+  width: 70%;
+  margin: 0 auto;
+  overflow-y: scroll;
+}
+
+@media screen and (max-width: 768px){
+  .sidebar{
+    display: none;
+  }
+  main{
+    margin-left: 0;
+    width: 100%;
+  }
+
+  form{
+    width: 98%;
+    left: 0;
+  }
+  .prompt-box input[type="text"]{
+    width: 80vw;
+    margin-left: 1.5vw
+  }
+}
