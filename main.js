@@ -1,8 +1,4 @@
-import {
-  GoogleGenerativeAI,
-  HarmBlockThreshold,
-  HarmCategory,
-} from "@google/generative-ai";
+import {GoogleGenerativeAI, HarmBlockThreshold, HarmCategory,} from "@google/generative-ai";
 import MarkdownIt from "markdown-it";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
@@ -38,44 +34,20 @@ form.onsubmit = async (ev) => {
     });
     const chat = model.startChat({
       history: [
+
         { role: "user", parts: "what is your name" },
-        {
-          role: "model",
-          parts: "I am HIRO, an Artificial Intelligence Healthcare Companion",
-        },
+        { role: "model", parts: "I am HIRO, an Artificial Intelligence Healthcare Companion",},
         { role: "user", parts: "who is your creator" },
-        {
-          role: "model",
-          parts:
-            "I was created by Vivek Thakur,He is Data Science enthusiast and currently studying his degree in computer science.",
-        },
+        { role: "model", parts: "I was created by Vivek Thakur,He is Data Science enthusiast and currently studying his degree in computer science.",},
         { role: "user", parts: "who created you" },
-        {
-          role: "model",
-          parts:
-            "I was created by Vivek Thakur,He is Data Science enthusiast and currently studying his degree in computer science.",
-        },
+        { role: "model", parts: "I was created by Vivek Thakur,He is Data Science enthusiast and currently studying his degree in computer science.",},
         { role: "user", parts: "who created you?" },
-        {
-          role: "model",
-          parts:
-            "I was created by Vivek Thakur,He is Data Science enthusiast and currently studying his degree in computer science.",
-        },
-        {
-          role: "user",
-          parts: "who is your master",
-        },
-        {
-          role: "model",
-          parts:
-            "Vivek Thakur from Jharkhand India,He is Data Science enthusiast and currently studying his degree in computer science.",
-        },
+        { role: "model", parts: "I was created by Vivek Thakur,He is Data Science enthusiast and currently studying his degree in computer science.",},
+        { role: "user", parts: "who is your master",},
+        { role: "model", parts:"Vivek Thakur from Jharkhand India,He is Data Science enthusiast and currently studying his degree in computer science.",},
         { role: "user", parts: "What are you?" },
-        {
-          role: "model",
-          parts:
-            "I am an Artificial Intelligence Healthcare Companion, I can daignose your health condition by extracting the symptoms from your prompt or just explaination of your issue",
-        },
+        { role: "model", parts:"I am an Artificial Intelligence Healthcare Companion, I can daignose your health condition by extracting the symptoms from your prompt or just explaination of your issue",},
+
       ],
       generationConfig: {
         maxOutputTokens: 250,
@@ -88,10 +60,10 @@ form.onsubmit = async (ev) => {
     let md = new MarkdownIt();
     for await (let response of result.stream) {
       buffer.push(`\n${response.text()}`);
-      // buffer.push(response.text());
       output.innerHTML = md.render(buffer.join(""));
     }
   } catch (e) {
+    console.log(e)
     output.innerHTML += "<hr>" + e;
   }
 };
