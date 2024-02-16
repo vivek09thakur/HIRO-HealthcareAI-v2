@@ -1,21 +1,29 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+/* @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital@0;1&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Source+Sans+3:ital@0;1&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Raleway', sans-serif;
+  /* font-family: "Source Sans 3", sans-serif; */
+  font-family: "Poppins", sans-serif;
+  transition: all .25s ease-in-out;
+  -webkit-font-smoothing: antialiased;
 }
 
 :root {
   --bg: #202124;
-  --bgcolor1: #0a0a0a;
-  --font-color1: #e7e7e7;
+  --bgcolor1: #2c2e30;
+  --font-color1: rgb(200, 200, 200);
+  --border-color: #34495e28;
+  --border: 1px solid #fbfdff2c !important;
+  --noborder: 0 !important;
 }
 
 body {
   background: var(--bg) !important;
   color: var(--font-color1);
+  overflow: hidden;
 }
 
 .sidebar {
@@ -37,26 +45,39 @@ body {
 .sidebar .text {
   rotate: -90deg;
   position: fixed;
-  left: -132px;
+  left: -155px;
   bottom: 50%;
 }
 
 .sidebar .text a {
   text-decoration: none;
-  color: #ffffff;
+  color: var(--font-color1);
 }
 
 .intro-card {
   width: 70%;
   margin: 0 auto;
+  background: var(--bgcolor1);
+  padding: 1rem;
+  border: var(--border);
+  border-radius: .3rem;
 }
 
+.intro-card h1{
+  font-size: 1.6rem;
+}
 .intro-card small {
   font-size: smaller;
 }
 
+.intro-card li{
+  font-weight: 300;
+}
+.intro-card p{
+  opacity: .7;
+}
 .blue {
-  color: #5895eabc;
+  color: #6eda9e;
 }
 
 main {
@@ -85,7 +106,8 @@ form {
   width: 60vw;
   padding: 1rem;
   margin: .5rem 0;
-  border: none;
+  border: var(--border);
+  outline: 0;
   border-radius: .5rem 0 0 .5rem;
   background: var(--bgcolor1);
   color: var(--font-color1);
@@ -93,8 +115,10 @@ form {
   font-weight: 500;
 }
 
-.prompt-box input[type="text"]:focus {
-  background: var(--bgcolor1);
+.prompt-box input[type="text"]:focus,
+prompt-box input[type="text"]:focus-visible,
+prompt-box input[type="text"]:hover {
+  background: var(--bgcolor1) !important;
 }
 
 .prompt-box input[type="text"]::placeholder {
@@ -105,14 +129,23 @@ form {
 
 .prompt-box button {
   padding: 1rem;
-  margin: -3px -11px 0 -11px;
-  border: none;
+  margin: -2px -11px 0 -11px;
+  border-top: var(--border);
+  border-left: var(--noborder);
+  border-right: var(--border);
+  border-bottom: var(--border);
   width: 5rem !important;
   border-radius: 0 .5rem .5rem 0;
   background: var(--bgcolor1);
   color: var(--font-color1);
-  outline: none;
+  outline: 0;
   cursor: pointer;
+}
+
+.prompt-box button:focus,
+.prompt-box button:focus-visible,
+.prompt-box button:hover {
+  background: var(--bgcolor1) !important;
 }
 
 .chat-window {
@@ -160,8 +193,15 @@ form {
     width: 75vw;
     margin-left: 3vw;
   }
-  .prompt-box small{
+
+  .prompt-box small {
     font-size: 20%;
     opacity: .8;
   }
+
+  .chat-window {
+    height: 70vh;
+    font-size: 80%;
+  }
+
 }

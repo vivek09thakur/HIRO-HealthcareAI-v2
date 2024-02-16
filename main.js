@@ -19,7 +19,7 @@ form.onsubmit = async (ev) => {
 
     let contents = [promptInput.value];
     promptInput.value = ''
-    introCard.textContent = ''
+    introCard.style.display = 'none';
 
     const genAI = new GoogleGenerativeAI(API_KEY);
     const model = genAI.getGenerativeModel({
