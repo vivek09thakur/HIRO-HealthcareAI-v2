@@ -12,72 +12,13 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./src/styles/style.css" />
-    <link rel="icon" href="/hiro-icon.png" />
+    <link rel="icon" href="logo.svg" />
     <title>HIRO | your personal healthcare companion 🚀</title>
   </head>
 
-  <body>
-    <!-- Navbar -->
-    <div class="sidebar">
-      <img src="/hiro-icon.png" />
-      <div class="text">
-        <a href="https://hiro-dev-ai.vercel.app">
-          HIRO | your
-          personal healthcare companion 🚀
-        </a>
-      </div>
-    </div>
-
-    <main>
-      <!-- IntroCard -->
-      <div class="intro-card">
-        <h1>Hello I'am HIRO,</h1>
-        <h3>Your personal healthcare companion 🚀</h3>
-        <br />
-        <p>I can do these following things, .i.g :</p>
-        <li>
-          <b
-            >I can predict the disease you might have by examining your symptoms
-            🔍</b
-          >
-        </li>
-        <li><b>I can answer your health queries ❓</b></li>
-        <li><b>I can suggest a good diet plan 🍅</b></li>
-        <li><b>I can tell precautions to a disease 😷</b></li>
-        <br />
-        <p>
-          Just explain your health issues in the prompt box below and
-          <b>Results will apear below:</b>
-        </p>
-      </div>
-
-      <!-- Chat-History -->
-      <div class="chat-window">
-        <p class="output"></p>
-      </div>
-    </main>
-
-    <!-- Prompt-Box -->
-    <form class="text-form">
-      <div class="prompt-box">
-        <label>
-          <input
-            name="prompt"
-            placeholder="Explain your health issues here"
-            type="text"
-            value=""
-          />
-        </label>
-        <button type="submit" class="btn btn-primary">
-          GO
-        </button>
-      </div>
-      <p id="small">
-        ⚠️ This bot may produce inaccurate information, please consult a doctor
-        before trusting or relaying on hiro response
-      </p>
-    </form>
+  <body id="app">
     <!-- Scripts -->
+    <script type="module" src="./main/index.js"></script>
     <script type="module" src="./main/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   </body>
