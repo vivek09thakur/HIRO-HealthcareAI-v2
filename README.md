@@ -1,5 +1,5 @@
-# **HIRO | Your Personal Healthcare Companion**
-> ## **Build with [Gemini](https://deepmind.google/technologies/gemini/#gemini-1.5)**
+### **HIRO | Your Personal Healthcare Companion**
+> **Build with [Gemini](https://deepmind.google/technologies/gemini/#gemini-1.5)**
 
 ### [Chat with HIRO](https://hiro-dev-ai.vercel.app/)
 
