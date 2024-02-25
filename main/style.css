@@ -1,0 +1,192 @@
+@import url("https://fonts.googleapis.com/css?family=Google+Sans:400,500&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin,latin-ext,vietnamese");
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  text-decoration: none !important;
+  transition: all .25s ease-in-out;
+  -webkit-font-smoothing: antialiased
+}
+
+:root {
+  --bg: #202025;
+  --cardbg: #0c625d;
+  --font-color1: rgb(246, 246, 246);
+  --border-color: #34495e28;
+  --border: 1px solid #e0e0e097 !important;
+  --noborder: 0 !important
+}
+
+body {
+  background: var(--bg) !important;
+  color: var(--font-color1);
+  overflow: hidden;
+  columns: var(--font-color1);
+}
+
+main {
+  margin-left: 10vh;
+  padding: 1rem;
+  overflow: hidden
+}
+
+form {
+  width: 70%;
+  position: absolute;
+  bottom: 10px;
+  left: 19.8%
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10vh;
+  height: 100%;
+  background: var(--bg) !important
+}
+
+.sidebar img {
+  width: 3rem;
+  height: 2rem;
+  margin: .7rem .7rem 0 .5rem
+}
+
+.sidebar .text {
+  rotate: -90deg;
+  position: fixed;
+  left: -135px;
+  bottom: 50%
+}
+
+.sidebar .text a {
+  color: var(--font-color1)
+}
+
+.intro-card {
+  width: 70%;
+  margin: 1% auto;
+  padding: 1rem;
+  background: var(--cardbg);
+  border-radius: .3rem
+}
+
+.intro-card h1 {
+  font-size: 1.6rem
+}
+
+.intro-card small {
+  font-size: smaller
+}
+
+.intro-card li {
+  font-weight: 200
+}
+
+.prompt-box {
+  width: 100%
+}
+
+.prompt-box input[type="text"] {
+  width: 60vw;
+  padding: 1rem;
+  margin: .5rem 0;
+  font-weight: 500;
+  background: var(--bg);
+  color:var(--font-color1);
+  border: var(--border);
+  border-radius: .5rem 0 0 .5rem;
+}
+
+.prompt-box input[type="text"]:focus,
+prompt-box input[type="text"]:hover {
+  background: var(--bgcolor1) !important
+}
+
+.prompt-box input[type="text"]::placeholder {
+  color: var(--font-color1);
+  font-weight: 400;
+  opacity: .5
+}
+
+.prompt-box button {
+  padding: 1rem;
+  margin: -2px -11px 0 -11px;
+  border-top: var(--border);
+  border-left: var(--noborder);
+  border-right: var(--border);
+  border-bottom: var(--border);
+  border-radius: 0 .5rem .5rem 0;
+  width: 5rem !important;
+  background: var(--bg);
+  cursor: pointer
+}
+
+.prompt-box button:focus,
+.prompt-box button:hover {
+  background: var(--bg) !important
+}
+
+.chat-window {
+  width: 70%;
+  margin: 0 auto;
+  overflow-y: scroll;
+  border-radius: 3px
+}
+
+#small {
+  font-size: 80%;
+  text-align: center;
+  margin: auto
+}
+
+@media screen and (max-width:768px) {
+  .sidebar {
+    display: none
+  }
+
+  main {
+    margin-left: 0;
+    width: 100%
+  }
+
+  form {
+    width: 98%;
+    left: 0;
+    bottom: 10px
+  }
+
+  .prompt-box input[type="text"] {
+    width: 80vw;
+    margin-left: 1.5vw
+  }
+
+  .chat-window {
+    width: 100%;
+    height: 50vh
+  }
+}
+
+@media screen and (max-width:580px) {
+  .intro-card {
+    width: 100%
+  }
+
+  .prompt-box input[type="text"] {
+    width: 75vw;
+    margin-left: 3vw
+  }
+
+  .prompt-box small {
+    font-size: 20%;
+    opacity: .8
+  }
+
+  .chat-window {
+    height: 70vh;
+    font-size: 80%
+  }
+}
