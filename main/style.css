@@ -69,7 +69,7 @@ form {
   padding: 1rem;
   background: var(--cardbg);
   border-radius: 0.5rem;
-  opacity: .7;
+  opacity: .85;
 }
 
 .intro-card h1 {
